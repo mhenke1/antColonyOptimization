@@ -1,3 +1,5 @@
+#!/bin/python
+
 import random
 import math
 
@@ -23,13 +25,20 @@ def paintTour(cities, tour):
 
     #paint cities
     for city in cities:
-        canvas.create_oval(city[0]*scale - 2,city[1]*scale - 2,city[0]*scale + 2,city[1]*scale + 2, width=2)
+        canvas.create_oval(city[0] * scale - 2, city[1] * scale - 2, city[0] * scale + 2, city[1] * scale + 2, width=2)
 
     #paint tour
     tourLength = len(tour)
     for point in range(1,tourLength):
-        canvas.create_line(cities[tour[point]][0]*scale,cities[tour[point]][1]*scale,cities[tour[point-1]][0]*scale,cities[tour[point-1]][1]*scale,width=2)
-    canvas.create_line(cities[tour[tourLength-1]][0]*scale,cities[tour[tourLength-1]][1]*scale,cities[tour[0]][0]*scale,cities[tour[0]][1]*scale,width=2)
+        canvas.create_line(
+        	cities[tour[point]][0] * scale, 
+        	cities[tour[point]][1] * scale,
+        	cities[tour[point-1]][0] * scale,
+        	cities[tour[point-1]][1] * scale, width=2)
+    canvas.create_line(cities[tour[tourLength-1]][0] * scale,
+    	cities[tour[tourLength-1]][1] * scale,
+    	cities[tour[0]][0] * scale,
+    	cities[tour[0]][1] * scale, width=2)
     root.mainloop()   
 
 def calculateTourLength(tour, distances):
